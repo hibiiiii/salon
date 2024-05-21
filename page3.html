@@ -70,7 +70,7 @@
 
   <section class="container form-container">
     <!-- Google 表單嵌入代碼開始 -->
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScbTDwg8Xl9QzPmkKTKAXBPmqTPWj0ZAxZL_VvGshWB7juKlw/viewform?embedded=true" width="640" height="1918" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>
+    <iframe id="google-form-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLScbTDwg8Xl9QzPmkKTKAXBPmqTPWj0ZAxZL_VvGshWB7juKlw/viewform?embedded=true" width="640" height="1820" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>
     <!-- Google 表單嵌入代碼結束 -->
   </section>
 
@@ -108,5 +108,18 @@
   <script src="assets/dropdown/js/navbar-dropdown.js"></script>
   <script src="assets/theme/js/script.js"></script>
   <script src="assets/formoid/formoid.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var iframe = document.getElementById('google-form-iframe');
+
+      iframe.onload = function() {
+        var hash = iframe.contentWindow.location.hash;
+
+        if (hash && hash.includes('formResponse')) {
+          window.scrollTo(0, 0);
+        }
+      };
+    });
+  </script>
 </body>
 </html>
